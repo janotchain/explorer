@@ -1,0 +1,7 @@
+___                __         
+ |     ___|_ |  _ /   _  o __ 
+ | |_| |  |_ | (/_\__(_) | | |
+ Static Block Explorer
+ github.com/turtlecoin/static-block-explorer
+
+ 
