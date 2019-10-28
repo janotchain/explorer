@@ -20,7 +20,7 @@ echo -e "\n### NETWORK INFO ###"
 curl -s http://localhost:11898/getinfo | jq -r 'to_entries|map("\(.key) - \(.value|tostring)")|.[]' 
 
 echo -e "\n### PENDING TRANSACTIONS ###"
-curl -s http://localhost:11898/gettransactions | jq -r 'to_entries|map("\(.key) - \(.value|tostring)")|.[]'
+curl -sd '{"jsonrpc":"2.0","method":"f_on_transactions_pool_json","params":{}}' http://localhost:11898/json_rpc | jq '.result.transactions[]' | jq -r 'to_entries|map("\(.key) - \(.value|tostring)")|.[]' 
 
 echo -e "\n### LAST 10 BLOCKS ###"
 curl -sd '{"jsonrpc":"2.0","method":"f_blocks_list_json","params":{"height":'"$HEIGHT"'}}' http://localhost:11898/json_rpc | jq '.result.blocks' | jq '.[0:10]'
